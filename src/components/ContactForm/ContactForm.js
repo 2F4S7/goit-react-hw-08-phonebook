@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { TextField, Button } from '@material-ui/core';
+import SaveIcon from '@material-ui/icons/Save';
 import { addContact } from '../../redux/contacts/contacts-operations';
-import styles from './ContactForm.module.css';
 import { getContacts } from '../../redux/contacts/contacts-selectors';
+import styles from './ContactForm.module.css';
 
 class ContactForm extends Component {
   state = {
@@ -40,37 +42,48 @@ class ContactForm extends Component {
 
     return (
       <form onSubmit={handleSubmit}>
-        <label className={styles.label}>
-          Name
-          <input
-            className={styles.input}
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-            required
-            value={name}
-            onChange={handleChange}
-          ></input>
-        </label>
-
-        <label className={styles.label}>
-          Number
-          <input
-            className={styles.input}
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-            required
-            value={number}
-            onChange={handleChange}
-          />
-        </label>
-
-        <button className={styles.button} type="submit">
-          Add contact
-        </button>
+        <TextField
+          label="Name"
+          variant="outlined"
+          type="text"
+          name="name"
+          required
+          value={name}
+          onChange={handleChange}
+          margin="dense"
+          required
+        />
+        <TextField
+          label="Number"
+          variant="outlined"
+          type="tel"
+          name="number"
+          required
+          value={number}
+          onChange={handleChange}
+          margin="dense"
+          placeholder="38-0XX-XXX-XX-XX"
+          pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
+          required
+        />
+        {/* <Button
+          className={styles.button}
+          variant="contained"
+          color="primary"
+          type="submit"
+          size="large"
+        >
+          Add Contact
+        </Button> */}
+        <Button
+          variant="contained"
+          color="default"
+          size="large"
+          startIcon={<SaveIcon />}
+          type="submit"
+        >
+          Save Contact
+        </Button>
       </form>
     );
   }

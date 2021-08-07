@@ -1,5 +1,5 @@
-/* .formBox {
-   display: flex;
+.formBox {
+  display: flex;
   flex-direction: column;
   align-items: center;
   width: 320px;
@@ -10,7 +10,11 @@
   border-radius: 3px;
   background-color: #d8d8d8;
   box-shadow: 3px 3px 7px rgb(0 0 0 / 90%);
-} */
+}
+
+.title {
+  text-transform: uppercase;
+}
 
 .button {
   margin-top: 8px;
